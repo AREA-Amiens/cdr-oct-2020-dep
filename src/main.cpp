@@ -59,10 +59,14 @@ strategie[1]+="T:0:90:d:0:D:0:290:530:220:0:E:";
   strategie[1]+="";*/
 
 
-  strategie[2]="C:c:270:600:90:A:h:0:J:d:h:0:J:g:h:0:R:0:-600:y:105:90:G:0:695:av:0:h:T:0:90:g:0:R:0:-350:x:105:0:0:";
-  strategie[2]+="G:0:55:av:0:h:D:0:230:860:0:0:S:0:D:0:550:1100:135:0:";
-  strategie[2]+="G:0:500:av:0:h:!D:0:568:975:208:0:G:0:975:568:208:0:A:b:0:P:0:a:0:L:500:0:";
-  strategie[2]+="A:h:0:L:500:0:O:2:0:G:0:866:av:0:h:A:b:0:P:1:a:0:L:500:0:A:h:0:A:500:0:";
+  strategie[2]="C:c:270:600:90:A:h:0:J:d:h:0:J:g:h:0:R:0:-550:y:105:90:G:0:695:av:0:h:T:0:90:g:0:R:0:-200:x:105:0:0:";
+  strategie[2]+="G:0:55:av:0:h:D:0:230:860:0:0:S:0:D:0:1100:550:225:0:";
+  strategie[2]+="G:0:100:av:0:h:A:b:0:P:0:a:0:L:500:0:A:h:0:L:500:0:O:2:g:0:L:1000:0:G:0:410:av:0:h:A:b:0:P:1:a:0:L:300:0:A:h:0:T:0:135:d:0:";
+  strategie[2]+="R:0:-740:y:105:0:0:G:0:80:av:0:h:T:0:90:d:0:R:0:-90:x:105:90:0:O:4:g:0:L:1000:0:G:0:150:av:0:h:T:0:40:g:0:G:0:55:av:0:h:A:b:0:P:3:a:0:E";
+  strategie[2]+="";
+
+  //O:3:g:0:T:0:5:g:0:G:0:170:av:0:h:A:b:0:P:4:a:0:L:1000:0:A:h:0:E";
+//  strategie[2]+="T:0:20:g:0:G:0:5:av:0:E";
   // strategie[2]="C:c:270:600:90:O:1:g:0:L:5000:0:O:2:0:g:L:5000:0:O:3:0:g:L:5000:0:O:4:0:g:L:5000:0:O:5:0:g:L:5000:0:O:6:0:g:L:5000:0:0:";
   // strategie[2]=+"O:1:g:0:L:5000:0:O:2:0:g:L:5000:0:O:3:0:g:L:5000:0:O:4:0:g:L:5000:0:O:5:0:g:L:5000:0:O:6:0:g:L:5000:0:0:";
   // strategie[2]=+"O:1:g:0:L:5000:0:O:2:0:g:L:5000:0:O:3:0:g:L:5000:0:O:4:0:g:L:5000:0:O:5:0:g:L:5000:0:O:6:0:g:L:5000:0:0:";
@@ -71,7 +75,7 @@ strategie[1]+="T:0:90:d:0:D:0:290:530:220:0:E:";
 
   strategie[3]="C:c:270:600:90:J:d:h:L:1000:0:J:d:b:g:L:1000:0:J:d:m:J:g:h:L:1000:0:J:g:b:g:L:1000:0:1:g:m:E:";
 
-  strategie[4]="C:b:D:0:500:0:45:E";
+  strategie[4]="C:b:270:600:90:A:b:0:L:3000:0:A:h:0:L:3000:0:A:b:0:L:3000:0:A:h:0:L:3000:0:A:b:0:L:3000:0:A:h:0:L:3000:0:A:b:0:L:3000:0:A:h:0:L:3000:0:A:b:0:L:3000:0:E";
 
   strategie[5]="C:c:270:600:90:P:0:a:0:L:10000:0:P:0:e:0:P:1:a:0:L:10000:0:P:1:e:0:P:2:a:0:L:10000:0:P:2:e:0:P:3:a:0:L:10000:0:P:3:e:0:P:4:a:0:L:10000:0:P:4:e:0:P:5:a:0:L:10000:V:0:a:0:V:1:a:0:V:2:a:0:V:3:a:0:V:4:a:0:V:5:a:0:";
   strategie[5]+="L:10000:P:0:e:0:P:1:e:0:P:2:e:0:P:3:e:0:P:4:e:0:P:5:e:0:L:10000:V:0:e:0:V:1:e:0:V:2:e:0:V:3:e:0:V:4:e:0:V:5:e:0:";
@@ -397,9 +401,9 @@ byte recalage(){
 }
 byte actionOuDep(){
   etatp=0;
-  Serial.print("etapeStrategei  :");
+  Serial2.print("etapeStrategei  :");
   etapeStrategei=quelEtapeDeStrate();
-  Serial.println(etapeStrategei);
+  Serial2.println(etapeStrategei);
   if(etapeStrategei[0]=='F'){
     nbPiont=convertionInt(isoInfo(2));
     return 1;
@@ -485,7 +489,6 @@ byte Action(){
       if(etapeStrategei[4]=='e')msg.buf[3]='0';
       if(etapeStrategei[4]=='a')msg.buf[3]='1';
       msg.len=4;
-      Serial2.println(etapeStrategei[2]);
       Can0.write(msg);
     }
     break;
@@ -497,19 +500,15 @@ byte Action(){
     msg.buf[3]=etapeStrategei[3];
     msg.len=4;
     Can0.write(msg);
-    Serial2.println("");
-    Serial2.print(msg.buf[2]);
-    Serial2.print(msg.buf[3]);
-    Serial2.println("");
-    Serial2.println("");
     break;
     case 'A':
-    Serial2.println("testget");
     msg.id=0x700;
     msg.buf[0]='A';
     msg.buf[1]='g';
     msg.buf[2]=etapeStrategei[2];
     msg.len=3;
+    Serial2.print("hatuer ");
+    Serial2.println((char)msg.buf[2]);
     Can0.write(msg);
     break;
     case 'V':
@@ -642,12 +641,6 @@ byte Attente(){
         emplacementRelleRobot.a=convertionInt(isoInfo(4));
       }
     }
-    Serial2.print("empacement robot");
-    Serial2.print(emplacementRelleRobot.x);
-    Serial2.print(" ");
-    Serial2.print(emplacementRelleRobot.y);
-    Serial2.print(" ");
-    Serial2.println(emplacementRelleRobot.a);
     if(etatp==4)return 5;
     if(etatp==5)return 6;
     return 0;
