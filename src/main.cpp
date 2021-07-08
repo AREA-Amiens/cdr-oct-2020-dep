@@ -22,7 +22,7 @@ void setup() {
   Serial.begin(9600);
 //  D:0:-100:0:0:D:0:0:0:0:D:0:-100:-100:0:D:0:0:0:0:D:0:0:-100:0:D:0:0:0:0:D:0:100:-100:0:D:0:0:0:0:
 //"C:c:270:600:90:R:0:-600:y:105:90:G:0:695:av:0:T:0:90:g:0:R:0:-350:x:105:0:0:G:0:55:av:0:D:0:230:860:0:0:S:D:0:800:600:0:0:D:0:350:200:90:R:0:-100:y:105:90:0:E:";
-strategie[0]="C:c:270:600:90:J:d:h:0:J:g:h:0:R:0:-600:y:105:90:G:0:695:av:0:h:T:0:90:g:0:R:0:-350:x:105:0:0:";
+strategie[0]="C:c:270:600:90:A:h:0:J:d:h:0:J:g:h:0:R:0:-600:y:105:90:G:0:695:av:0:h:T:0:90:g:0:R:0:-350:x:105:0:0:";
 strategie[0]+="G:0:55:av:0:h:D:0:230:860:0:0:S:0:D:0:800:600:0:0:D:0:350:200:90:0:R:0:-100:y:105:90:0:";
 strategie[0]+="G:0:30:av:0:h:D:0:350:200:103:0:G:0:780:av:0:h:G:0:60:ar:0:h:D:0:750:510:180:0:G:0:560:av:0:h:G:0:100:ar:0:0:D:0:700:1080:180:0:G:0:430:av:0:h:G:0:300:ar:18:h:";
 strategie[0]+="T:0:90:d:0:R:0:-900:y:1895:270:0:G:0:80:av:0:h:T:0:90:d:0:D:0:230:1855:0:0:R:0:-275:x:105:0:0:J:d:b:0:J:g:b:0:L:100:0:G:0:680:av:0:h:J:d:h:0:J:g:h:0:";// manche a aire
@@ -30,7 +30,7 @@ strategie[0]+="G:0:50:ar:0:h:L:100:0:";
 strategie[0]+="D:0:590:1700:0:0:D:0:900:1400:0:0:G:0:1030:av:0:h:T:0:90:d:0:G:0:200:av:0:h:G:0:200:ar:0:h:T:0:90:d:0:G:0:270:av:0:h:T:0:90:g:0:G:0:200:av:0:h:G:0:200:ar:0:h:";
 strategie[0]+="T:0:90:d:0:D:0:290:570:220:0:G:0:200:ar:0:h:D:0:300:450:n:0:E:";
 
-strategie[1]="C:c:270:600:90:J:d:h:0:J:g:h:0:R:0:-600:y:105:90:G:0:695:av:0:h:T:0:90:g:0:R:0:-350:x:105:0:0:";
+strategie[1]="C:c:270:600:90:A:h:0:J:d:h:0:J:g:h:0:R:0:-600:y:105:90:G:0:695:av:0:h:T:0:90:g:0:R:0:-350:x:105:0:0:";
 strategie[1]+="G:0:55:av:0:h:D:0:230:900:0:0:S:0:D:0:800:600:0:0:D:0:350:200:90:0:R:0:-205:y:105:90:0:";
 strategie[1]+="G:0:40:av:0:h:D:0:350:190:103:0:G:0:770:av:0:h:G:0:60:ar:0:h:D:0:750:510:180:0:G:0:560:av:0:h:G:0:100:ar:0:h:D:0:700:1080:180:0:G:0:430:av:0:h:G:0:300:ar:18:h:";
 strategie[1]+="T:0:90:d:0:R:0:-900:y:1895:270:0:G:0:80:av:0:h:T:0:90:d:0:D:0:230:1845:0:0:R:0:-255:x:105:0:0:J:d:b:0:J:g:b:0:L:100:0:G:0:680:av:0:b:J:d:h:0:J:g:h:0:";// manche a aire
@@ -59,21 +59,32 @@ strategie[1]+="T:0:90:d:0:D:0:290:530:220:0:E:";
   strategie[1]+="";*/
 
 
+  strategie[2]="C:c:270:600:90:A:h:0:J:d:h:0:J:g:h:0:R:0:-600:y:105:90:G:0:695:av:0:h:T:0:90:g:0:R:0:-350:x:105:0:0:";
+  strategie[2]+="G:0:55:av:0:h:D:0:230:860:0:0:S:0:D:0:550:1100:135:0:";
+  strategie[2]+="G:0:500:av:0:h:!D:0:568:975:208:0:G:0:975:568:208:0:A:b:0:P:0:a:0:L:500:0:";
+  strategie[2]+="A:h:0:L:500:0:O:2:0:G:0:866:av:0:h:A:b:0:P:1:a:0:L:500:0:A:h:0:A:500:0:";
+  // strategie[2]="C:c:270:600:90:O:1:g:0:L:5000:0:O:2:0:g:L:5000:0:O:3:0:g:L:5000:0:O:4:0:g:L:5000:0:O:5:0:g:L:5000:0:O:6:0:g:L:5000:0:0:";
+  // strategie[2]=+"O:1:g:0:L:5000:0:O:2:0:g:L:5000:0:O:3:0:g:L:5000:0:O:4:0:g:L:5000:0:O:5:0:g:L:5000:0:O:6:0:g:L:5000:0:0:";
+  // strategie[2]=+"O:1:g:0:L:5000:0:O:2:0:g:L:5000:0:O:3:0:g:L:5000:0:O:4:0:g:L:5000:0:O:5:0:g:L:5000:0:O:6:0:g:L:5000:0:0:";
+  // strategie[2]=+"O:1:g:0:L:5000:0:O:2:0:g:L:5000:0:O:3:0:g:L:5000:0:O:4:0:g:L:5000:0:O:5:0:g:L:5000:0:O:6:0:g:L:5000:0:0:";
+  // strategie[2]=+"O:1:g:0:L:5000:0:O:2:0:g:L:5000:0:O:3:0:g:L:5000:0:O:4:0:g:L:5000:0:O:5:0:g:L:5000:0:O:6:0:g:L:5000:0:0:E:";
 
-  strategie[2]="C:c:270:600:90:O:1:g:0:L:10000:0:O:2:0:g:L:10000:0:O:3:0:g:L:10000:0:O:4:0:g:L:10000:0:O:5:0:g:L:10000:0:O:6:0:g:L:10000:0:0:E:";
   strategie[3]="C:c:270:600:90:J:d:h:L:1000:0:J:d:b:g:L:1000:0:J:d:m:J:g:h:L:1000:0:J:g:b:g:L:1000:0:1:g:m:E:";
+
   strategie[4]="C:b:D:0:500:0:45:E";
 
-  strategie[5]="C:c:270:600:90:J:g:b:0:G:0:800:av:0:E:E:";
-  //strategie[5]+="P:g:a:6:L:10000:0:P:g:e:0:L:1000:0:E:E";
-  strategie[6]="C:j:";
+  strategie[5]="C:c:270:600:90:P:0:a:0:L:10000:0:P:0:e:0:P:1:a:0:L:10000:0:P:1:e:0:P:2:a:0:L:10000:0:P:2:e:0:P:3:a:0:L:10000:0:P:3:e:0:P:4:a:0:L:10000:0:P:4:e:0:P:5:a:0:L:10000:V:0:a:0:V:1:a:0:V:2:a:0:V:3:a:0:V:4:a:0:V:5:a:0:";
+  strategie[5]+="L:10000:P:0:e:0:P:1:e:0:P:2:e:0:P:3:e:0:P:4:e:0:P:5:e:0:L:10000:V:0:e:0:V:1:e:0:V:2:e:0:V:3:e:0:V:4:e:0:V:5:e:0:";
+  strategie[5]+="L:10000:P:g:a:0:P:g:a:0:E:g:a:0:E:g:a:0:L:10000:P:g:a:0:P:g:a:0:E:g:e:0:E:g:e:0:L:";
+
+  strategie[6]="C:j:270:600:90:A:h:0:L:5000:0:A:m:0:L:5000:0:A:b:0:E";
   strategie[7]="C:b:";
   strategie[8]="C:c:";
   Can0.begin(1000000);
 
   MsTimer2::set(1,IntrerrupTimer);
-  emplacementRelleRobot.x=270;
-  emplacementRelleRobot.y=600;
+  emplacementRelleRobot.x=1000;
+  emplacementRelleRobot.y=1000;
   emplacementRelleRobot.a=90;
   MsTimer2::start();
   // teensy.id=0x006;
@@ -139,6 +150,9 @@ void interpretationCan(){
       emplacementRelleRobot.x=convertionInt(isoInfo(1));
       emplacementRelleRobot.y=convertionInt(isoInfo(2));
       emplacementRelleRobot.a=convertionInt(isoInfo(3));
+      if(strategieBicolor){
+        emplacementRelleRobot.x=3000-emplacementRelleRobot.x;
+      }
     }
     strategieNumero=Tabee[2];
     msg.id=0x4;
@@ -471,19 +485,26 @@ byte Action(){
       if(etapeStrategei[4]=='e')msg.buf[3]='0';
       if(etapeStrategei[4]=='a')msg.buf[3]='1';
       msg.len=4;
+      Serial2.println(etapeStrategei[2]);
       Can0.write(msg);
     }
     break;
     case 'O':
-    msg.id=0x400;
+    msg.id=0x700;
     msg.buf[0]='O';
     msg.buf[1]='g';
     msg.buf[2]=etapeStrategei[2];
     msg.buf[3]=etapeStrategei[3];
     msg.len=4;
     Can0.write(msg);
+    Serial2.println("");
+    Serial2.print(msg.buf[2]);
+    Serial2.print(msg.buf[3]);
+    Serial2.println("");
+    Serial2.println("");
     break;
     case 'A':
+    Serial2.println("testget");
     msg.id=0x700;
     msg.buf[0]='A';
     msg.buf[1]='g';
@@ -585,10 +606,11 @@ byte Attente(){
   //     //motorDroit.setPosition(0);
   //   }
   // }
-  if((etatp==5||etatp==2||etatp==9)&&arretLidaRoboEnface){
+  if((etatp==5||etatp==2||etatp==9)&&arretLidaRoboEnface&&conditionTimerFin){
     controller.emergencyStop();
     int poseMg=motorGauch.getPosition();
     int poseMd=motorDroit.getPosition();
+
     if(distancePas<0){
       mG=distancePas-poseMg;
       mD=-distancePas-poseMd;
@@ -604,12 +626,7 @@ byte Attente(){
   }
   if(!controller.isRunning()){
     calculePosition();
-    Serial.print("empacement robot");
-    Serial.print(emplacementRelleRobot.x);
-    Serial.print(" ");
-    Serial.print(emplacementRelleRobot.y);
-    Serial.print(" ");
-    Serial.println(emplacementRelleRobot.a);
+
     if(etatp==9){
       if(isoInfo(2)=='x'){
         if(!strategieBicolor){
@@ -625,6 +642,12 @@ byte Attente(){
         emplacementRelleRobot.a=convertionInt(isoInfo(4));
       }
     }
+    Serial2.print("empacement robot");
+    Serial2.print(emplacementRelleRobot.x);
+    Serial2.print(" ");
+    Serial2.print(emplacementRelleRobot.y);
+    Serial2.print(" ");
+    Serial2.println(emplacementRelleRobot.a);
     if(etatp==4)return 5;
     if(etatp==5)return 6;
     return 0;
@@ -731,9 +754,9 @@ void calculePosition(){
   else msg.buf[5]|=0;
   msg.len=6;
   Can0.write(msg);
+
 }
 void contageEncodeurDroit(){
-  Serial.println("2");
   if(digitalRead(ENCODEUR_DROIT_B))impultionEncodeurDroit++;
   else impultionEncodeurDroit--;
 }
