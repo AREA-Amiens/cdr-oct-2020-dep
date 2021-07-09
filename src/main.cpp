@@ -17,6 +17,7 @@ int timerAttente=0,timerObjectif=0;
 static CAN_message_t msg;
 String strategie[9];
 int xEnvoie,yEnvoie,aEnvoie,passe1,passe2,passe3;
+int timerDaree=0;
 void setup() {
   Serial2.begin(9600);
   Serial.begin(9600);
@@ -59,13 +60,175 @@ strategie[1]+="T:0:90:d:0:D:0:290:530:220:0:E:";
   strategie[1]+="";*/
 
 
-  strategie[2]="C:c:270:600:90:A:h:0:J:d:h:0:J:g:h:0:R:0:-550:y:105:90:G:0:695:av:0:h:T:0:90:g:0:R:0:-200:x:105:0:0:";
-  strategie[2]+="G:0:55:av:0:h:D:0:230:860:0:0:S:0:D:0:1100:550:225:0:";
-  strategie[2]+="G:0:100:av:0:h:A:b:0:P:0:a:0:L:500:0:A:h:0:L:500:0:O:2:g:0:L:1000:0:G:0:410:av:0:h:A:b:0:P:1:a:0:L:300:0:A:h:0:T:0:135:d:0:";
-  strategie[2]+="R:0:-740:y:105:0:0:G:0:80:av:0:h:T:0:90:d:0:R:0:-90:x:105:90:0:O:4:g:0:L:1000:0:G:0:150:av:0:h:T:0:40:g:0:G:0:55:av:0:h:A:b:0:P:3:a:0:E";
-  strategie[2]+="";
+  strategie[2]="C:c:270:600:90:A:h:0:J:d:h:0:J:g:h:0:R:0:-550:y:105:90:G:0:695:av:0:h:T:0:90:g:0:R:0:-200:x:105:0:0:";//recalage
 
-  //O:3:g:0:T:0:5:g:0:G:0:170:av:0:h:A:b:0:P:4:a:0:L:1000:0:A:h:0:E";
+  strategie[2]+="G:0:55:av:0:h:D:0:230:860:0:0:S:0:D:0:1100:550:225:0:";
+  strategie[2]+="G:0:100:av:0:h:A:b:0:P:0:a:0:L:300:0:A:h:0:L:300:0:O:2:g:0:L:1000:0:G:0:390:av:0:h:A:b:0:P:1:a:0:L:300:0:A:h:0:T:0:135:d:0:";
+  strategie[2]+="R:0:-740:y:105:0:0:G:0:80:av:0:h:T:0:90:d:0:R:0:-90:x:105:90:0:O:4:g:0:L:1000:0:G:0:150:av:0:h:T:0:40:g:0:G:0:55:av:0:h:A:b:0:P:3:a:0:";
+  strategie[2]+="L:300:0:A:h:0:O:5:g:0:T:0:5:g:0:G:0:170:av:0:h:L:300:0:A:b:0:";
+  strategie[2]+="P:4:a:0:";
+  strategie[2]+="L:300:0:";
+  strategie[2]+="A:h:0:";
+  strategie[2]+="T:0:115:d:0:";
+  strategie[2]+="G:0:150:av:0:h:";
+  strategie[2]+="P:4:e:0:V:4:a:0:";
+  strategie[2]+="L:100:0:V:4:e:0:";
+  strategie[2]+="G:0:80:ar:0:h:";
+  strategie[2]+="O:1:d:0:";
+  strategie[2]+="L:2500:0:";
+  strategie[2]+="P:0:e:0:V:0:a:0:";
+  strategie[2]+="L:100:0:V:0:e:0:";
+  //strategie[2]+="O:2:d:0:L:500:0:"; //Coté vert levé de la gatling pour eviter le gobelet 
+  strategie[2]+="G:0:80:ar:0:h:";
+  strategie[2]+="T:0:78:g:0:";
+  strategie[2]+="G:0:547:av:0:h:";
+  strategie[2]+="A:b:0:";
+  strategie[2]+="P:0:a:0:";
+  strategie[2]+="L:300:0:";
+  strategie[2]+="A:h:0:";
+  strategie[2]+="T:0:81:d:0:";
+  strategie[2]+="G:0:245:av:0:h:";
+  strategie[2]+="P:0:e:0:V:0:a:0:";
+  strategie[2]+="L:100:0:V:0:e:0:";
+  strategie[2]+="G:0:80:ar:0:h:";
+  strategie[2]+="O:2:d:0:L:1000:0:";
+  strategie[2]+="P:1:e:0:V:1:a:0:";
+  strategie[2]+="L:100:0:V:1:e:0:";
+  strategie[2]+="G:0:80:ar:0:h:";
+  strategie[2]+="O:4:d:0:L:1000:0:";
+  strategie[2]+="T:0:5:g:0:";
+  strategie[2]+="P:3:e:0:V:3:a:0:";
+  strategie[2]+="L:100:0:V:3:e:0:";
+  strategie[2]+="G:0:150:ar:0:h:";
+  strategie[2]+="O:1:d:0:";
+  strategie[2]+="T:0:35:g:0:";
+  strategie[2]+="G:0:200:av:0:h:L:100:0:";
+  strategie[2]+="A:b:0:";
+  strategie[2]+="P:0:a:0:";
+  strategie[2]+="L:300:0:";
+  strategie[2]+="A:h:0:";
+  strategie[2]+="G:0:80:ar:0:h:";
+  strategie[2]+="T:0:145:d:0:";
+  strategie[2]+="R:0:-970:x:1895:0:";
+  strategie[2]+="G:0:90:av:0:h:";
+  strategie[2]+="T:0:80:d:0:";
+  strategie[2]+="R:0:-360:x:105:0:";
+  strategie[2]+="J:d:b:0:J:g:b:0:L:100:0:G:0:680:av:0:b:J:d:h:0:J:g:h:0:";//manche a air
+  strategie[2]+="G:0:50:ar:0:h:L:100:0:";
+  strategie[2]+="T:0:5:d:0:";
+  strategie[2]+="G:0:350:ar:0:h:";
+  strategie[2]+="T:0:42:g:0:";
+  strategie[2]+="O:4:d:0:";
+  strategie[2]+="G:0:950:av:0:h:";
+  strategie[2]+="A:b:0:";
+  strategie[2]+="P:3:a:0:";
+  strategie[2]+="L:500:0:";
+  strategie[2]+="A:h:0:";
+  strategie[2]+="T:0:57:d:0:";
+  strategie[2]+="G:0:600:av:0:h:";
+  strategie[2]+="O:5:d:0:";
+  //strategie[2]+="O:5:d:0:";
+  strategie[2]+="T:0:25:d:0:";
+  strategie[2]+="G:0:100:av:0:h:";
+  strategie[2]+="O:1:d:0:";
+  strategie[2]+="G:0:1350:ar:0:h:";
+  strategie[2]+="T:0:130:d:0:";
+  strategie[2]+="G:0:600:av:0:h:";
+  strategie[2]+="P:0:e:0:V:0:a:0:";
+  strategie[2]+="L:100:0:V:0:e:0:";
+  strategie[2]+="G:0:80:ar:0:h:";
+  strategie[2]+="O:4:d:0:";
+  strategie[2]+="L:1500:0:";
+  strategie[2]+="P:3:e:0:V:3:a:0:";
+  strategie[2]+="L:100:0:V:3:e:0:";
+
+  strategie[2]+="E";  
+  //stratégie 2 coté jaune 
+  strategie[3]="C:c:270:600:90:A:h:0:J:d:h:0:J:g:h:0:R:0:-550:y:105:90:G:0:695:av:0:h:T:0:90:g:0:R:0:-200:x:105:0:0:";//recalage
+
+  strategie[3]+="G:0:55:av:0:h:D:0:230:860:0:0:S:0:D:0:1100:550:225:0:";
+  strategie[3]+="G:0:100:av:0:h:A:b:0:P:0:a:0:L:300:0:A:h:0:L:300:0:O:2:g:0:L:1000:0:G:0:410:av:0:h:A:b:0:P:1:a:0:L:300:0:A:h:0:T:0:135:d:0:";
+  strategie[3]+="R:0:-740:y:105:0:0:G:0:80:av:0:h:T:0:90:d:0:R:0:-90:x:105:90:0:O:4:g:0:L:1000:0:G:0:150:av:0:h:T:0:40:g:0:G:0:55:av:0:h:A:b:0:P:3:a:0:";
+  strategie[3]+="L:300:0:A:h:0:O:5:g:0:T:0:5:g:0:G:0:170:av:0:h:L:300:0:A:b:0:";
+  strategie[3]+="P:4:a:0:";
+  strategie[3]+="L:300:0:";
+  strategie[3]+="A:h:0:";
+  strategie[3]+="T:0:115:d:0:";
+  strategie[3]+="G:0:150:av:0:h:";
+  strategie[3]+="P:4:e:0:V:4:a:0:";
+  strategie[3]+="L:100:0:V:4:e:0:";
+  strategie[3]+="G:0:80:ar:0:h:";
+  strategie[3]+="O:1:d:0:";
+  strategie[3]+="L:2500:0:";
+  strategie[3]+="P:0:e:0:V:0:a:0:";
+  strategie[3]+="L:100:0:V:0:e:0:";
+  //strategie[3]+="O:2:d:0:L:500:0:"; //Coté vert levé de la gatling pour eviter le gobelet 
+  strategie[3]+="G:0:80:ar:0:h:";
+  strategie[3]+="T:0:78:g:0:";
+  strategie[3]+="G:0:547:av:0:h:";
+  strategie[3]+="A:b:0:";
+  strategie[3]+="P:0:a:0:";
+  strategie[3]+="L:300:0:";
+  strategie[3]+="A:h:0:";
+  strategie[3]+="T:0:81:d:0:";
+  strategie[3]+="G:0:245:av:0:h:";
+  strategie[3]+="P:0:e:0:V:0:a:0:";
+  strategie[3]+="L:100:0:V:0:e:0:";
+  strategie[3]+="G:0:80:ar:0:h:";
+  strategie[3]+="O:2:d:0:L:1000:0:";
+  strategie[3]+="P:1:e:0:V:1:a:0:";
+  strategie[3]+="L:100:0:V:1:e:0:";
+  strategie[3]+="G:0:80:ar:0:h:";
+  strategie[3]+="O:4:d:0:L:1000:0:";
+  strategie[3]+="T:0:5:g:0:";
+  strategie[3]+="P:3:e:0:V:3:a:0:";
+  strategie[3]+="L:100:0:V:3:e:0:";
+  strategie[3]+="G:0:150:ar:0:h:";
+  strategie[3]+="O:1:d:0:";
+  strategie[3]+="T:0:35:g:0:";
+  strategie[3]+="G:0:200:av:0:h:";
+  strategie[3]+="A:b:0:";
+  strategie[3]+="P:0:a:0:";
+  strategie[3]+="L:300:0:";
+  strategie[3]+="A:h:0:";
+  strategie[3]+="G:0:80:ar:0:h:";
+  strategie[3]+="T:0:145:d:0:";
+  strategie[3]+="R:0:-970:x:1895:0:";
+  strategie[3]+="G:0:90:av:0:h:";
+  strategie[3]+="T:0:80:d:0:";
+  strategie[3]+="R:0:-360:x:105:0:";
+  strategie[3]+="J:d:b:0:J:g:b:0:L:100:0:G:0:680:av:0:b:J:d:h:0:J:g:h:0:";//manche a air
+  strategie[3]+="G:0:50:ar:0:h:L:100:0:";
+  strategie[3]+="T:0:5:d:0:";
+  strategie[3]+="G:0:350:ar:0:h:";
+  strategie[3]+="T:0:42:g:0:";
+  strategie[3]+="O:4:d:0:";
+  strategie[3]+="G:0:950:av:0:h:";
+  strategie[3]+="A:b:0:";
+  strategie[3]+="P:3:a:0:";
+  strategie[3]+="L:300:0:";
+  strategie[3]+="A:h:0:";
+  strategie[3]+="T:0:57:d:0:";
+  strategie[3]+="G:0:600:av:0:h:";
+  strategie[3]+="O:5:d:0:";
+  //strategie[3]+="O:5:d:0:";
+  strategie[3]+="T:0:25:d:0:";
+  strategie[3]+="G:0:100:av:0:h:";
+  strategie[3]+="O:1:d:0:";
+  strategie[3]+="G:0:1350:ar:0:h:";
+  strategie[3]+="T:0:130:d:0:";
+  strategie[3]+="G:0:600:av:0:h:";
+  strategie[3]+="P:0:e:0:V:0:a:0:";
+  strategie[3]+="L:100:0:V:0:e:0:";
+  strategie[3]+="G:0:80:ar:0:h:";
+  strategie[3]+="O:4:d:0:";
+  strategie[3]+="L:1500:0:";
+  strategie[3]+="P:3:e:0:V:3:a:0:";
+  strategie[3]+="L:100:0:V:3:e:0:";
+
+  strategie[3]+="E";
+
+  //P:4:a:0:L:1000:0:A:h:0:E";
 //  strategie[2]+="T:0:20:g:0:G:0:5:av:0:E";
   // strategie[2]="C:c:270:600:90:O:1:g:0:L:5000:0:O:2:0:g:L:5000:0:O:3:0:g:L:5000:0:O:4:0:g:L:5000:0:O:5:0:g:L:5000:0:O:6:0:g:L:5000:0:0:";
   // strategie[2]=+"O:1:g:0:L:5000:0:O:2:0:g:L:5000:0:O:3:0:g:L:5000:0:O:4:0:g:L:5000:0:O:5:0:g:L:5000:0:O:6:0:g:L:5000:0:0:";
@@ -73,7 +236,7 @@ strategie[1]+="T:0:90:d:0:D:0:290:530:220:0:E:";
   // strategie[2]=+"O:1:g:0:L:5000:0:O:2:0:g:L:5000:0:O:3:0:g:L:5000:0:O:4:0:g:L:5000:0:O:5:0:g:L:5000:0:O:6:0:g:L:5000:0:0:";
   // strategie[2]=+"O:1:g:0:L:5000:0:O:2:0:g:L:5000:0:O:3:0:g:L:5000:0:O:4:0:g:L:5000:0:O:5:0:g:L:5000:0:O:6:0:g:L:5000:0:0:E:";
 
-  strategie[3]="C:c:270:600:90:J:d:h:L:1000:0:J:d:b:g:L:1000:0:J:d:m:J:g:h:L:1000:0:J:g:b:g:L:1000:0:1:g:m:E:";
+  //strategie[3]="C:c:270:600:90:J:d:h:L:1000:0:J:d:b:g:L:1000:0:J:d:m:J:g:h:L:1000:0:J:g:b:g:L:1000:0:1:g:m:E:";
 
   strategie[4]="C:b:270:600:90:A:b:0:L:3000:0:A:h:0:L:3000:0:A:b:0:L:3000:0:A:h:0:L:3000:0:A:b:0:L:3000:0:A:h:0:L:3000:0:A:b:0:L:3000:0:A:h:0:L:3000:0:A:b:0:L:3000:0:E";
 
@@ -242,6 +405,7 @@ byte attenteTierte(){
   return 2;
 }
 void IntrerrupTimer(){
+  timerDaree++;
    if((conteurFin!=0||conditionTimerFin)&&conteurFin<=200000)conteurFin++;
    if(conteurFin>97000){
      msg.id=0x800;
@@ -413,6 +577,7 @@ byte actionOuDep(){
     return 1;
   }
   else if (etapeStrategei[0]=='A'){
+    Serial2.println("Arrete d'envoyer sur ce canal");
     nbPiont=convertionInt(isoInfo(1));
     return 1;
   }
@@ -507,8 +672,6 @@ byte Action(){
     msg.buf[1]='g';
     msg.buf[2]=etapeStrategei[2];
     msg.len=3;
-    Serial2.print("hatuer ");
-    Serial2.println((char)msg.buf[2]);
     Can0.write(msg);
     break;
     case 'V':
@@ -583,7 +746,8 @@ byte PreparationTurn(){
     distanceDegTurn=convertionInt(isoInfo(1));
   }
   if(strategieBicolor){
-    distanceDegTurn=convertionInt(isoInfo(1))-180;
+    distanceDegTurn=-convertionInt(isoInfo(1));
+
   }
   distancePas=(int)(COEF_GO*COEF_TURN*distanceDegTurn*dir);
   lancemntDesMoteur(distancePas,distancePas,V_MAX_MOTEUR,V_MAX_MOTEUR,A_MAX_MOTEUR,A_MAX_MOTEUR);
@@ -617,7 +781,7 @@ byte Attente(){
       mG=distancePas+poseMd;
       mD=-distancePas+poseMg;
     }
-
+    timerDaree=0;
     delay(1000);
     distancePas=mG;
     lancemntDesMoteur(mG,mD,V_MAX_MOTEUR,V_MAX_MOTEUR,A_MAX_MOTEUR,A_MAX_MOTEUR);

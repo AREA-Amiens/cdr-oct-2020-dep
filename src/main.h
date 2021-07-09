@@ -57,6 +57,11 @@ typedef struct{
 
 
 
+
+
+
+
+
 void interpretationCan();
 int comparChenCan(String comp);
 int comparChen(String chaine1,String chaine2);
